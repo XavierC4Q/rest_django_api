@@ -3,15 +3,12 @@ from .models import Movies
 from .serializers import MoviesSerializer
 from rest_framework import mixins, generics
 
-class MoviesView(mixins.ListModelMixin,
-                mixins.CreateModelMixin,
-                generics.GenericAPIView):
-
+class MovieListView(generics.ListCreateAPIView):
+    
     queryset = Movies.objects.all()
     serializer_class = MoviesSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+class MovieDetailView(generics.RetrieveUpdateDestroyAPIView):
+    
+    queryset = Movies.objects.all()
+    serializer_class = MoviesSerializer

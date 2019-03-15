@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from api.views import MoviesView
+from api.views import MovieListView, MovieDetailView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('movies', MoviesView.as_view())
+    path('movies', MovieListView.as_view()),
+    path('movies/<int:pk>/', MovieDetailView.as_view())
 ]
