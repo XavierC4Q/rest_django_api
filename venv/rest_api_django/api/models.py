@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 from enumfields import EnumField
 from enumfields import Enum
 
@@ -15,6 +15,11 @@ class Movies(models.Model):
     genre = EnumField(Genres)
     title = models.TextField(default='', null=True, blank=True, max_length=100)
     release_data = models.DateField()
+
+class User(AbstractUser):
+    pass
+
+
 
 
     
